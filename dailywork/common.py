@@ -123,21 +123,11 @@ class DB(object):
     """
     数据库操作
     """
-    def __init__(self, env='pro'):
-        self.env = env
+    def __init__(self):
         self.db_con = self.__conDb()
 
     def __conDb(self):
-        if self.env == 'pro':
-            conn = MySQLdb.connect(host='10.8.85.29', port=3306, user='root', passwd='vhcpmo9y', db='testplatformdb',
-                                   charset="utf8")
-        elif self.env == 'local':
-            conn = MySQLdb.connect(host='localhost', port=3306, user='root', passwd='root', db='testplatformdb',
-                                   charset="utf8")
-        else:
-            conn = MySQLdb.connect(host='10.33.20.29', port=3306, user='root', passwd='root', db='testplatformdb',
-                                   charset="utf8")
-        # conn = MySQLdb.connect(host='10.8.85.29', port=3306, user='root', passwd='vhcpmo9y', db='testplatformdb', charset="utf8")
+        conn = MySQLdb.connect(host='localhost', port=3306, user='root', passwd='root', db='testplatformdb',charset="utf8")
         cur = conn.cursor(MySQLdb.cursors.DictCursor)
         return conn, cur
 
